@@ -44,12 +44,16 @@ module SocialShares
       (@@config[config_name] || {})[:open_timeout] || DEFAULT_OPEN_TIMEOUT
     end
 
+    def proxy
+      (@@config[config_name] || {})[:proxy]
+    end
+    
     def get(url, params)
-      RestClient::Resource.new(url, timeout: timeout, open_timeout: open_timeout).get(params)
+      RestClient::Resource.new(url, timeout: timeout, open_timeout: open_timeout, proxy: proxy).get(params)
     end
 
     def post(url, params, headers = {})
-      RestClient::Resource.new(url, timeout: timeout, open_timeout: open_timeout).post(params, headers)
+      RestClient::Resource.new(url, timeout: timeout, open_timeout: open_timeout, proxy: proxy).post(params, headers)
     end
   end
 end
