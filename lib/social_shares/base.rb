@@ -49,14 +49,10 @@ module SocialShares
     end
     
     def get(url, params)
-      puts "WE HERE"
-      puts "proxy: #{proxy}"
       RestClient::Resource.new(url, timeout: timeout, open_timeout: open_timeout, proxy: proxy).get(params)
     end
 
     def post(url, params, headers = {})
-      puts "WE HERE2"
-      puts "proxy: #{proxy}"
       RestClient::Resource.new(url, timeout: timeout, open_timeout: open_timeout, proxy: proxy).post(params, headers)
     end
   end
