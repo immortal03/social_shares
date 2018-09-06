@@ -116,11 +116,10 @@ Note that #has_any? is faster than (#total > 0), because it stops on first netwo
 
 Configuring
 -----
-You can specify timeout and open_timeout for each social network
+You can specify timeout and open_timeout for each social network. Specify proxy in config for proxy utilization.
 ```ruby
 SocialShares.config = {
-  twitter: {timeout: 4, open_timeout: 7},
-  facebook: {timeout: 10, open_timeout: 15}
+  facebook: {timeout: 4, open_timeout: 7, proxy: 'http://111.111.111.111:2344'}
 }
 ```
 
