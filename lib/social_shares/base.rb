@@ -49,7 +49,13 @@ module SocialShares
     end
     
     def get(url, params)
-      RestClient::Resource.new(url, timeout: timeout, open_timeout: open_timeout, proxy: proxy).get(params)
+      retries = 5
+      begin
+        RestClient::Resource.new(url, timeout: timeout, open_timeout: open_timeout, proxy: proxy).get(params)
+      rescue Exception 
+        retries -= 1
+        retry if retries > 0
+      end
     end
 
     def post(url, params, headers = {})
