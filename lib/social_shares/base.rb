@@ -12,13 +12,11 @@ module SocialShares
       end
     end
 
-    attr_accessor :checked_url, :proxy_url
+    attr_accessor :checked_url
 
-    def initialize(checked_url, proxy_url = nil)
+    def initialize(checked_url)
       # remove URI fragment
       @checked_url = checked_url.gsub(/#.+$/, '')
-      @proxy_url = proxy_url
-      puts @proxy_url
     end
 
     def shares
